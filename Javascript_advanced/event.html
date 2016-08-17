@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理</title>
+</head>
+<body>
+<h1>事件流</h1>
+<p>事件流历史：IE的是事件冒泡，Netscape的是事件捕获</p>
+<p>DOM2级事件流包括三个阶段：事件捕获阶段、处于目标阶段和事件冒泡阶段</p>
+
+<h1>事件处理程序</h1>
+<h2>HTML事件处理程序</h2>
+
+<form method="post">
+    <input type="text" value="" name="username">
+    <input type="button" value="Echo Username" onclick="alert(username.value)">
+</form>
+
+<h2>DOM0级事件处理程序</h2>
+<input id="dom0" type="button" value="dom0">
+<script>
+    var btn = document.getElementById("dom0");
+    btn.onclick = function(){
+        alert("dom0级事件处理");
+    }
+</script>
+
+<h2>DOM2级事件处理程序</h2>
+<input id="dom2" type="button" value="dom2">
+<script>
+    var btn = document.getElementById("dom2");
+    btn.addEventListener("click", function () {
+        alert("dom2");
+    },false);
+</script>
+
+<h2>IE事件处理程序</h2>
+<input id="IE" type="button" value="IE">
+<script>
+    var btn = document.getElementById("IE");
+    btn.attachEvent("onclick", function () {
+       alert("IE");
+    });
+</script>
+
+<h1>事件对象Event</h1>
+<h2>DOM中的事件对象</h2>
+<p>浏览器会将一个event对象传入到事件处理程序中</p>
+
+<input id="domEvent" type="button" value="domEvent">
+<script>
+    var btn = document.getElementById("domEvent");
+    btn.onclick = function(event){
+        alert(event.type);
+    }
+</script>
+
+<!--<h2>currentTarget/target/this区别</h2>-->
+<!--<p>如果直接将事件处理程序指定给了目标元素，则this/currentTarget/target包含相同的值</p>-->
+<!--<input id="aimElement" type="button" value="aimElement">-->
+
+<h2>preventDefault():取消浏览器默认行为</h2>
+<a href="www.baidu.com" id="myLink" >跳转百度</a>
+<script>
+    var link = document.getElementById("myLink");
+    link.onclick = function (event) {
+        event.preventDefault();
+    }
+</script>
+
+<h2>stopPropagation():停止事件传播</h2>
+<input type="button" id="myBtn" value="点击弹出">
+<script>
+    var btn = document.getElementById("myBtn");
+    btn.onclick = function (event) {
+        alert("Clicked");
+        event.stopPropagation();
+    };
+
+    document.body.onclick = function () {
+        alert("body Clicked");
+    }
+
+</script>
+
+
+</body>
+</html>

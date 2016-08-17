@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+
+<script>
+    var name = "the window";
+
+
+    var object = {
+        name: "My Object",
+        getNameFunc: function(){
+//            var name = "get name in outerfunc";
+            var that = this;
+            return function () {
+//                alert("this "+this+" arguments "+arguments );
+                alert("that "+that);
+                return that.name;
+            }
+        }
+
+    }
+
+    var object = {
+        name: "My Object",
+        getNameFunc: function(){
+            var that = this;
+            return function () {
+                alert("that "+that);
+                return that.name;
+            }
+        }
+
+    }
+
+    var object = {
+        name: "My Object",
+        getNameFunc: function(){
+            return function () {
+                return this.name;
+            }
+        }
+
+    }
+
+    alert(object.getNameFunc()());
+
+</script>
+</html>

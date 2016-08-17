@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function Person(){
+    }
+
+    Person.prototype.name= "Gary";
+    Person.prototype.age= 29;
+    Person.prototype.job= "Software Engineer";
+    Person.prototype.sayName = function(){
+      alert(this.name);
+    };
+
+    var person1 = new Person();
+//    person1.name="Andrew";
+//    person1.sayName();
+//    delete person1.name;
+//    person1.sayName();
+//
+    var person2 = new Person();
+//    person2.sayName();
+
+    alert("person1.sayName and person2.sayName "+ (person1.sayName == person2.sayName));
+
+    alert("Object.getPrototypeOf(person1) == Person.prototype : "+ (Object.getPrototypeOf(person1) == Person.prototype));
+
+
+
+
+
+</script>
+
+</body>
+</html>

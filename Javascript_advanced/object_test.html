@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        function displayInfo(args){
+            var output = "";
+            if(typeof args.name == "string"){
+                output += "name "+ args.name + "\n";
+            }
+
+            if(typeof args.age == "number"){
+                output += "age "+args.age + "\n";
+            }
+            var hobby = args.hobbies;
+            if(hobby instanceof Array){
+                var favourite = hobby.filter(function (item, index, array) {
+                    if(typeof item == "string") {
+                        return item.indexOf("like") >= 0;
+                    }
+                })
+
+                for(var i = 0;i<favourite.length;i++){
+                    output += "hobby: "+favourite[i]+"\n";
+                }
+            }
+
+            alert(output);
+
+        }
+        function test() {
+            displayInfo({
+                name: "Andrew",
+                age: 30,
+                hobbies:["like skating","like basketball","dislike football"]
+            })
+
+            displayInfo({
+                name: "simon"
+            })
+        }
+    </script>
+    <title></title>
+</head>
+<body>
+<input type="submit" value="submit" onclick="test()">
+
+</body>
+</html>
